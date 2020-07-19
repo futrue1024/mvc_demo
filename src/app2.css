@@ -1,0 +1,27 @@
+#app2 {
+  position: relative;
+}
+#tab-bar {
+  margin: 8px;
+  display: flex;
+}
+#app2 #content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#app2 #content > li {
+  display: none;
+}
+#app2 #tab-bar > li {
+  border: 1px solid gray;
+  width: 50%;
+}
+#app2 #content > li.active {
+  display: block;
+}
+#app2 #tab-bar > li.active {
+  background: grey;
+  color: white;
+}

@@ -1,0 +1,24 @@
+#app4 {
+  position: relative;
+}
+@keyframes col {
+  0% {
+    background: red;
+  }
+  100% {
+    background: blue;
+  }
+}
+#app4 #change {
+  border: 1px solid red;
+  width: 16vw;
+  height: 16vh;
+  border-radius: 50%;
+  top: 25vh;
+  margin-left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+#app4 #change.active {
+  animation: col 1s alternate linear infinite;
+}

@@ -1,5 +1,7 @@
 import "./reset.css";
-import "./app1.css";
+import "./global.css";
+
 import "./app1.js";
-import $ from "jquery";
-console.log($);
+import "./app2.js";
+import "./app3.js";
+import "./app4.js";

@@ -189,6 +189,11 @@ var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../Users/apple/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js"}],"global.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
 },{"_css_loader":"../../../Users/apple/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js"}],"app1.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
@@ -11283,9 +11288,14 @@ return jQuery;
 },{"process":"../../../Users/apple/AppData/Local/Yarn/Data/global/node_modules/process/browser.js"}],"app1.js":[function(require,module,exports) {
 "use strict";
 
+require("./app1.css");
+
 var _jquery = _interopRequireDefault(require("jquery"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var html = "\n<section id=\"app1\">\n<div id=\"appContent1\">\n  <div class=\"output\">\n    <span id=\"number\">100</span>\n  </div>\n  <div class=\"actions\">\n    <button id=\"add\">+1</button>\n    <button id=\"minus\">-1</button>\n    <button id=\"multiply\">*2</button>\n    <button id=\"divide\">\xF72</button>\n  </div>\n</div>\n</section>\n";
+var $element = (0, _jquery.default)(html).prependTo((0, _jquery.default)("body > .page")); //$代表选择某一标签。
 
 var $add = (0, _jquery.default)("#add");
 var $minus = (0, _jquery.default)("#minus");
@@ -11294,6 +11304,12 @@ var $divide = (0, _jquery.default)("#divide");
 var $number = (0, _jquery.default)("#number");
 var n = localStorage.getItem("n");
 $number.text(n || 100);
+$divide.on("click", function () {
+  var n = parseInt($number.text());
+  n /= 2;
+  localStorage.setItem("n", n);
+  $number.text(n);
+});
 $add.on("click", function () {
   var n = parseInt($number.text());
   n += 1;
@@ -11314,27 +11330,98 @@ $multiply.on("click", function () {
   localStorage.setItem("n", n);
   $number.text(n);
 });
-$divide.on("click", function () {
-  var n = parseInt($number.text());
-  n /= 2;
-  localStorage.setItem("n", n);
-  $number.text(n);
-});
-},{"jquery":"../node_modules/jquery/dist/jquery.js"}],"main.js":[function(require,module,exports) {
+},{"./app1.css":"app1.css","jquery":"../node_modules/jquery/dist/jquery.js"}],"app2.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../Users/apple/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js"}],"app2.js":[function(require,module,exports) {
 "use strict";
 
-require("./reset.css");
-
-require("./app1.css");
-
-require("./app1.js");
+require("./app2.css");
 
 var _jquery = _interopRequireDefault(require("jquery"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-console.log(_jquery.default);
-},{"./reset.css":"reset.css","./app1.css":"app1.css","./app1.js":"app1.js","jquery":"../node_modules/jquery/dist/jquery.js"}],"../../../Users/apple/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var html = " <section id=\"app2\">\n<ol id=\"tab-bar\">\n  <li>1111</li>\n  <li>2222</li>\n</ol>\n<ol id=\"content\">\n  <li>\u9009\u62E91111</li>\n  <li>\u9009\u62E92222</li>\n</ol>\n</section>";
+var $element = (0, _jquery.default)(html).appendTo((0, _jquery.default)("body>.page"));
+var $tabBar = (0, _jquery.default)("#tab-bar");
+var $content = (0, _jquery.default)("#content");
+var index = localStorage.getItem("index");
+$tabBar.on("click", "li", function (e) {
+  var $li = (0, _jquery.default)(e.currentTarget);
+  $li.addClass("active").siblings().removeClass("active");
+  var index = $li.index();
+  localStorage.setItem("index", index);
+  $content.children().eq(index).addClass("active").siblings().removeClass("active");
+});
+$tabBar.children().eq(index).trigger("click");
+},{"./app2.css":"app2.css","jquery":"../node_modules/jquery/dist/jquery.js"}],"app3.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../Users/apple/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js"}],"app3.js":[function(require,module,exports) {
+"use strict";
+
+require("./app3.css");
+
+var _jquery = _interopRequireDefault(require("jquery"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var html = "<section id=\"app3\">\n<div class=\"front\">\u4E00\u76F4\u70B9\u5B83\uFF01</div>\n</section>";
+var $element = (0, _jquery.default)(html).appendTo((0, _jquery.default)("body>.page"));
+var $front = (0, _jquery.default)(".front");
+var active = localStorage.getItem("app3-active") === "yes";
+$front.toggleClass("active", active);
+$front.on("click", function () {
+  if ($front.hasClass("active")) {
+    $front.removeClass("active");
+    localStorage.setItem("app3-active", "no");
+  } else {
+    $front.addClass("active");
+    localStorage.setItem("app3-active", "yes");
+  }
+});
+},{"./app3.css":"app3.css","jquery":"../node_modules/jquery/dist/jquery.js"}],"app4.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../Users/apple/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js"}],"app4.js":[function(require,module,exports) {
+"use strict";
+
+require("./app4.css");
+
+var _jquery = _interopRequireDefault(require("jquery"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var html = " <section id=\"app4\"><div id=\"change\"></div></section>\n";
+var $element = (0, _jquery.default)(html).appendTo((0, _jquery.default)("body>.page"));
+var $change = (0, _jquery.default)("#change");
+$change.on("mouseenter", function () {
+  $change.addClass("active");
+}).on("mouseleave", function () {
+  $change.removeClass("active");
+});
+},{"./app4.css":"app4.css","jquery":"../node_modules/jquery/dist/jquery.js"}],"main.js":[function(require,module,exports) {
+"use strict";
+
+require("./reset.css");
+
+require("./global.css");
+
+require("./app1.js");
+
+require("./app2.js");
+
+require("./app3.js");
+
+require("./app4.js");
+},{"./reset.css":"reset.css","./global.css":"global.css","./app1.js":"app1.js","./app2.js":"app2.js","./app3.js":"app3.js","./app4.js":"app4.js"}],"../../../Users/apple/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -11362,7 +11449,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65161" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52386" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
